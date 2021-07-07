@@ -1,8 +1,10 @@
 """
 Класс для прорисовки формы
 """
-from forms.mplgraph import MPLgraph
+from handlers.loadNominals.loadNominalsCommandHandlerParameter import LoadNominalsCommandHandler
 
+from forms.mplgraph import MPLgraph
+import os
 import tkinter as tk
 
 import matplotlib as mpl
@@ -14,8 +16,8 @@ import PySimpleGUI as sg
 
 
 class MainForm():
-    def __init__(self):
-        pass
+    def __init__(self,handler):
+        self.handler = handler
 
     def show(self):
         figure_w, figure_h = 300, 300
@@ -23,11 +25,12 @@ class MainForm():
             [sg.Text('base'), sg.InputText('1'), sg.Text('exponent'), sg.InputText('1')],
             [sg.Canvas(size=(figure_w, figure_h), key='-CANVAS-'),
              sg.Canvas(size=(figure_w, figure_h), key='-CANVAS2-')],
-            [sg.Submit(), sg.Exit(), sg.Button('Ok')],#, sg.Output
+            [sg.Multiline(size=(50, 10), key = '_output_'), sg.Multiline(size=(50, 10), key = '_output2_')],
+            [sg.Submit(), sg.Exit(), sg.Button('Ok'), sg.Button('Загрузить номинальные значения')],#, sg.Output
             [sg.Input(), sg.FileBrowse()]
         ]
         window = sg.Window('MVC Test', layout, grab_anywhere=True, finalize=True)
-        figure = mpl.figure.Figure(figsize=(5, 4), dpi=100)  # 5, 4
+        figure = mpl.figure.Figure(figsize=(5, 5), dpi=100)  # 5, 4
         # Первое окно
         canvas = MPLgraph(figure, window['-CANVAS-'].TKCanvas)
         canvas._tkcanvas.pack(side=tk.BOTTOM, fill=tk.BOTH)  # expand=tk.YES,
@@ -47,7 +50,17 @@ class MainForm():
                 canvas.clear()
                 canvas.plot(x, y)
             if event == 'Ok':
-                sg.Print('You entered ', values[0])
+                #sg.Print('You entered ', values[0])
+                window.FindElement('_output2_').Update('')
+                window['_output2_']. print('You entered ', values[1])
+            if event == 'Загрузить номинальные значения':
+                window.FindElement('_output_').Update('')
+                #window['_output_'].TKOut.output.config(wrap='word')  # set Output element word wrapping
+                file1 = os.path.basename(values[2])
+                parameters = LoadNominalsCommandHandler(file1)
+                window['_output_'].print('Load from database: ' + file1)
+                result_request = self.handler.initFunction(0, parameters)
+                window['_output_'].print('Parameters: ' + str(result_request))
         window.close()
 
     def powerplot(self,base, exponent):

@@ -1,21 +1,22 @@
 """
 Класс для работы с базой данных
 """
-
+import math
+import numpy as np
 from sqlalchemy import create_engine
 from sqlalchemy.orm.session import sessionmaker
 
 from db.supportFunctions import resultproxy_to_dict
 
 from .base import Session, current_session, Base
+from .measuredParameters import MeasuredParameters
+from .nominalParameters import NominalParameters
 
 class SQLDataBase():
 
-    def __init__(self,id,pl_table,imbalance_tolerance):
-        self.id = id
-        self.engine = create_engine('sqlite:///smart_warehouse.db', echo = True)
-        self.pl_table = pl_table
-        self.imbalance_tolerance= imbalance_tolerance
+    def __init__(self,name_of_database):
+        #name_of_database = 'set_of_blades'
+        self.engine = create_engine('sqlite:///' + name_of_database, echo = True)
 
     def table_create(self):
         #Метод для создания таблиц и базы данных
@@ -26,63 +27,43 @@ class SQLDataBase():
         self.session = sessionmaker(bind=self.engine)()
 
     def init_repletion_data_base(self):
-        # Создание объектов в таблице Type
-        names_list = ['Деталь 1', 'Деталь 2', 'Деталь 3', 'Деталь 4', 'Деталь 5', 'Деталь 6']
+        # Создание объектов в таблице NominalParameters
+        thickness_T_nom =11.1*24.73/25.13
+        thickness_B_nom = 24.73 - thickness_T_nom
+        type_object = NominalParameters(thickness_nom = 24.73, thickness = 25.13, T_thickness_lower = -0.1,
+                                        T_thickness_upper = 0.15, thickness_T = 11.1, thickness_B = 25.13-11.1,
+                                        thickness_T_nom = thickness_T_nom, thickness_B_nom = thickness_B_nom,
+                                        angle = 30/180*math.pi, T_angle_lower = -1/6/180*math.pi,
+                                        T_angle_upper = 1/6/180*math.pi, shelf_width_T = 11.75, shelf_width_half_T = 6,
+                                        T_shelf_width_half_T_lower = -0.1, T_shelf_width_half_T_upper = 0.1,
+                                        shelf_width_B = 11.5, shelf_width_half_B = 6.8, T_shelf_width_half_B_lower = -0.1,
+                                        T_shelf_width_half_B_upper =  0.1, angle_slice = 50/180*math.pi, slice_B = 16.05,
+                                        slice_T = 12.7)
+        self.session.add(type_object)
+        self.session.commit()
+    def generated_data_save_data_base(self,delta_thickness,delta_angle):
+        # Создание объектов в таблице MeasuredParameters
+        #Генерация значений, временно здесь, нужно переносить в отдельную функцию mainHandler-а
+        # Добавать в сессию
+        for thickness, angle in zip(delta_thickness,delta_angle):
+            measured_object = MeasuredParameters(type_id=1, delta_thickness=thickness, delta_angle=angle)
+            self.session.add(measured_object)
+        self.session.commit()
 
-        if (self.pl_table[1] == 1):
-            # Добавать в сессию
-            for name in names_list:
-                type_object = Type(type_name=name)
-                self.session.add(type_object)
-            self.session.commit()
+    def select_all_nominal_params(self):
+        # Функция для подачи запроса
+        request_str = "SELECT * \
+                           FROM \
+                           nominal"
+        s = self.session.execute(request_str)
+        result_of_query = resultproxy_to_dict(s)
+        return result_of_query
 
-        # Создание объектов в таблице Location
-        workshop_list = ['1', '2', '3', '4', '5', '6']
-        lot_list = ['1', '2', '3']
-        if (self.pl_table[2] == 1):
-            # Добавать в сессию
-            for workshop in workshop_list:
-                for lot in lot_list:
-                    location_object = Location(workshop_number=workshop, lot_number=lot)
-                    self.session.add(location_object)
-            self.session.commit()
-
-        # Создание объектов в таблице Passport
-        import random
-        from datetime import datetime
-        from datetime import timedelta
-        def random_date(start, end):
-            """
-            This function will return a random datetime between two datetime
-            objects.
-            """
-            delta = end - start
-            int_delta = (delta.days * 24 * 60 * 60) + delta.seconds
-            random_second = random.randrange(int_delta)
-            return start + timedelta(seconds=random_second)
-
-        d1 = datetime.strptime('1/1/2020 1:30 PM', '%m/%d/%Y %I:%M %p')
-        d2 = datetime.strptime('6/30/2021 4:50 AM', '%m/%d/%Y %I:%M %p')
-        if (self.pl_table[3] == 1):
-            # Добавать в сессию
-            for i in range(30):
-                type_id = random.randint(1, len(names_list))
-                location_id = random.randint(1, len(workshop_list) * len(lot_list))
-                date = random_date(d1, d2)
-                passport_object = Passport(type_id=type_id, location_id=location_id, receipt_date=date)
-                self.session.add(passport_object)
-            self.session.commit()
-
-        # Создание объектов в таблице Characteristic
-        passport_id_list = [1, 2, 5, 7, 8, 10, 12, 14, 17, 18, 20, 24, 27, 28, 29, 30]
-        if (self.pl_table[4] == 1):
-            # Добавать в сессию
-            for passport_id in passport_id_list:
-                imbalance = random.random() * 5
-                diameter = random.random() * 10
-                characteristic_object = Characteristic(passport_id=passport_id, imbalance=imbalance, diameter=diameter)
-                self.session.add(characteristic_object)
-            self.session.commit()
+    def request_delete_of_measured(self):
+        #Запрос на удаление всего из таблицы measure
+        request_str = "DELETE FROM measure \
+                           WHERE type_id = 1"
+        s = self.session.execute(request_str)
 
     def request_of_imbalance(self):
         # Функция для подачи запроса
@@ -95,6 +76,8 @@ class SQLDataBase():
         s2 = self.session.execute(request_str)
         result_of_query = resultproxy_to_dict(s2)
         return result_of_query
+
+
 
     def search_for_id(self, id):
         # Функция для подачи запроса на поиск
