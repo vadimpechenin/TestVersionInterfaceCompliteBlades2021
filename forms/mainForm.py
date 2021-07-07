@@ -1,7 +1,9 @@
 """
 Класс для прорисовки формы
 """
-from handlers.loadNominals.loadNominalsCommandHandlerParameter import LoadNominalsCommandHandler
+from handlers.loadNominals.loadNominalsCommandHandlerParameter import LoadNominalsCommandHandlerParameter
+from handlers.generateMeasure.generateMeasureCommandHandlerParameter import GenerateMeasureCommandHandlerParameter
+from handlers.loadMeasure.loadMeasureCommandHandlerParameter import LoadMeasureCommandHandlerParameter
 
 from forms.mplgraph import MPLgraph
 import os
@@ -22,11 +24,11 @@ class MainForm():
     def show(self):
         figure_w, figure_h = 300, 300
         layout = [
-            [sg.Text('base'), sg.InputText('1'), sg.Text('exponent'), sg.InputText('1')],
+            [sg.Text('base'), sg.InputText('84'), sg.Text('exponent'), sg.InputText('1')],
             [sg.Canvas(size=(figure_w, figure_h), key='-CANVAS-'),
              sg.Canvas(size=(figure_w, figure_h), key='-CANVAS2-')],
             [sg.Multiline(size=(50, 10), key = '_output_'), sg.Multiline(size=(50, 10), key = '_output2_')],
-            [sg.Submit(), sg.Exit(), sg.Button('Ok'), sg.Button('Загрузить номинальные значения')],#, sg.Output
+            [sg.Submit(), sg.Exit(), sg.Button('Загрузить номинальные значения'), sg.Button('Загрузить измерения'), sg.Button('Генерация измерений')],#, sg.Output
             [sg.Input(), sg.FileBrowse()]
         ]
         window = sg.Window('MVC Test', layout, grab_anywhere=True, finalize=True)
@@ -49,18 +51,43 @@ class MainForm():
                 x, y = self.powerplot(float(values[0]), float(values[1]))
                 canvas.clear()
                 canvas.plot(x, y)
-            if event == 'Ok':
-                #sg.Print('You entered ', values[0])
-                window.FindElement('_output2_').Update('')
-                window['_output2_']. print('You entered ', values[1])
+
             if event == 'Загрузить номинальные значения':
                 window.FindElement('_output_').Update('')
-                #window['_output_'].TKOut.output.config(wrap='word')  # set Output element word wrapping
+                # window['_output_'].TKOut.output.config(wrap='word')  # set Output element word wrapping
                 file1 = os.path.basename(values[2])
-                parameters = LoadNominalsCommandHandler(file1)
+                parameters = LoadNominalsCommandHandlerParameter(file1, 'nominal')
                 window['_output_'].print('Load from database: ' + file1)
                 result_request = self.handler.initFunction(0, parameters)
                 window['_output_'].print('Parameters: ' + str(result_request))
+
+            if event == 'Генерация измерений':
+                #sg.Print('You entered ', values[0])
+                file1 = os.path.basename(values[2])
+                number_of_blades = int(values[0])
+                T_thickness_lower = -0.1  # Допуск на толщину, нижняя граница
+                T_thickness_upper = 0.15  # Допуск на толщину, верхняя граница
+                T_angle_lower = -1/6/180*np.pi  # Допуск на угол, нижняя граница
+                T_angle_upper = 1/6/180*np.pi  # Допуск на угол, верхняя граница
+                delta_thickness = np.random.normal((T_thickness_upper+T_thickness_lower)/2,
+                                                   (T_thickness_upper-T_thickness_lower)/6, size = number_of_blades)
+                delta_angle = np.random.normal((T_angle_upper + T_angle_lower)/2,
+                                                   (T_angle_upper - T_angle_lower)/6, size = number_of_blades)
+                parameters = GenerateMeasureCommandHandlerParameter(file1,'measure',delta_thickness,delta_angle)
+                result_request = self.handler.initFunction(1, parameters)
+                window.FindElement('_output2_').Update('')
+                window['_output2_']. print('You entered ', result_request)
+
+            if event == 'Загрузить измерения':
+                window.FindElement('_output_').Update('')
+                #window['_output_'].TKOut.output.config(wrap='word')  # set Output element word wrapping
+                file1 = os.path.basename(values[2])
+                parameters = LoadNominalsCommandHandlerParameter(file1,'measure')
+                window['_output2_'].print('Load from database: ' + file1)
+                result_request = self.handler.initFunction(2, parameters)
+                window['_output2_'].print('Parameters: ' + str(result_request))
+                number_of_blades =result_request.pop()
+
         window.close()
 
     def powerplot(self,base, exponent):

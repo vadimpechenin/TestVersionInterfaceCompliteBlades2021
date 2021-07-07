@@ -50,68 +50,25 @@ class SQLDataBase():
             self.session.add(measured_object)
         self.session.commit()
 
-    def select_all_nominal_params(self):
+    def select_all_parans_in_table(self,name):
         # Функция для подачи запроса
         request_str = "SELECT * \
                            FROM \
-                           nominal"
+                           " + str(name)
         s = self.session.execute(request_str)
         result_of_query = resultproxy_to_dict(s)
         return result_of_query
 
-    def request_delete_of_measured(self):
+    def request_delete_of_measured(self,name):
         #Запрос на удаление всего из таблицы measure
-        request_str = "DELETE FROM measure \
+        request_str = "DELETE FROM " + str(name) +" \
                            WHERE type_id = 1"
+        self.session.execute(request_str)
+
+    def request_count_of_blades(self, name):
+        # Запрос на подсчет количества лопаток в базе данных
+        request_str = "SELECT count(part_id) AS Количество \
+                        FROM " + str(name)
         s = self.session.execute(request_str)
-
-    def request_of_imbalance(self):
-        # Функция для подачи запроса
-        request_str = "SELECT passport.passport_id, imbalance, diameter \
-                           FROM \
-                           passport INNER JOIN characteristic \
-                           ON passport.passport_id=characteristic.passport_id \
-                           WHERE imbalance<" + str(self.imbalance_tolerance) +" \
-                           ORDER BY diameter DESC"
-        s2 = self.session.execute(request_str)
-        result_of_query = resultproxy_to_dict(s2)
+        result_of_query = resultproxy_to_dict(s)
         return result_of_query
-
-
-
-    def search_for_id(self, id):
-        # Функция для подачи запроса на поиск
-        request_str = "SELECT type_name \
-                              FROM \
-                              type INNER JOIN passport \
-                              ON type.type_id=passport.type_id \
-                              WHERE passport.passport_id=" + str(id)
-        s2 = self.session.execute(request_str)
-        result_of_query = resultproxy_to_dict(s2)
-        return result_of_query
-
-    def updata_for_id(self, id):
-        # Функция для подачи запроса на поиск
-        request_str = "SELECT passport.passport_id, type_name, workshop_number, receipt_date, lot_number \
-                              FROM \
-                              type INNER JOIN passport \
-                              ON type.type_id=passport.type_id \
-                              INNER JOIN location \
-                              ON passport.location_id=location.location_id \
-                              WHERE passport.passport_id=" + str(id)
-        s2 = self.session.execute(request_str)
-        result_of_query = resultproxy_to_dict(s2)
-        return result_of_query
-
-    def list_of_parts(self):
-        # Вызов списка видов деталей из базы данных
-        request_str = "SELECT type_name \
-                                      FROM \
-                                      type "
-        s4 = self.session.execute(request_str)
-        result_of_query = resultproxy_to_dict(s4)
-        ciphers = []
-        for a1 in result_of_query:
-            #print(a1)
-            ciphers.append(a1['type_name'])
-        return ciphers
