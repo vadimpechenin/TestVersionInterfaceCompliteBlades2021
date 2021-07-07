@@ -2,130 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3ef2416-4adc-4746-9f37-10bbc9c4bc10" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/TestVersionInterfaceCompliteBlades2021.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TestVersionInterfaceCompliteBlades2021.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/set_of_blades.db" beforeDir="false" afterPath="$PROJECT_DIR$/application/set_of_blades.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/mainSQL.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/mainSQL.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forms/mainForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms/mainForm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandlerParameter.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandlerParameter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/mainHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/mainHandler.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-              <folding>
-                <element signature="e#116#160#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/mainHandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="84" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/generateMeasure/generateMeasureCommandHandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/forms/mainForm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="88" column="54" lean-forward="true" selection-start-line="88" selection-start-column="54" selection-end-line="88" selection-end-column="54" />
-              <folding>
-                <element signature="e#35#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/loadMeasure/loadMeasureCommandHandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/loadMeasure/loadMeasureCommandHandlerParameter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/measuredParameters.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="28" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="28" />
-              <folding>
-                <element signature="e#69#92#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandlerParameter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/mainSQL.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="73" column="30" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
-              <folding>
-                <element signature="e#40#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/default.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="587" selection-start-line="587" selection-end-line="587" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -137,99 +23,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/db/base.py" />
-        <option value="$PROJECT_DIR$/db/supportFunctions.py" />
-        <option value="$PROJECT_DIR$/handlers/baseCommandHandler.py" />
-        <option value="$PROJECT_DIR$/handlers/baseCommandHandlerParameter.py" />
-        <option value="$PROJECT_DIR$/db/nominalParams.py" />
-        <option value="$PROJECT_DIR$/db/measuredParameters.py" />
-        <option value="$PROJECT_DIR$/test/main.py" />
-        <option value="$PROJECT_DIR$/forms/mplgraph.py" />
-        <option value="$PROJECT_DIR$/db/nominalParameters.py" />
-        <option value="$PROJECT_DIR$/application/main.py" />
-        <option value="$PROJECT_DIR$/handlers/generateMeasure.py" />
-        <option value="$PROJECT_DIR$/../SetOfBlades.py" />
-        <option value="$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandler.py" />
-        <option value="$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandlerParameter.py" />
-        <option value="$PROJECT_DIR$/handlers/generateMeasure/generateMeasureCommandHandlerParameter.py" />
-        <option value="$PROJECT_DIR$/handlers/generateMeasure/generateMeasureCommandHandler.py" />
-        <option value="$PROJECT_DIR$/handlers/loadMeasure/loadMeasureCommandHandlerParameter.py" />
-        <option value="$PROJECT_DIR$/handlers/mainHandler.py" />
-        <option value="$PROJECT_DIR$/handlers/loadMeasure/loadMeasureCommandHandler.py" />
-        <option value="$PROJECT_DIR$/db/mainSQL.py" />
-        <option value="$PROJECT_DIR$/forms/mainForm.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
+  <component name="ProjectId" id="1v00cdP8c8rbq32F2qWTw2Cagit" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="forms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-              <item name="generateMeasure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-              <item name="loadMeasure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestVersionInterfaceCompliteBlades2021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestVersionInterfaceCompliteBlades2021" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-              <item name="loadNominals" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SetOfBlades.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interface/Style_lesson3.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -237,18 +38,6 @@
       <recent name="D:\PYTHON\Programms\CompleteSetOfBlades2021\TestVersionInterfaceCompliteBlades2021\handlers\generateMeasure" />
       <recent name="D:\PYTHON\Programms\CompleteSetOfBlades2021\TestVersionInterfaceCompliteBlades2021" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -273,6 +62,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -286,46 +76,43 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39935064" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32900432" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
+  <component name="WindowStateProjectService">
+    <state x="634" y="95" key="FileChooserDialogImpl" timestamp="1625685543572">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state x="634" y="95" key="FileChooserDialogImpl/0.0.1707.680@0.0.1707.680" timestamp="1625685543572" />
+    <state width="1685" height="98" key="GridCell.Tab.0.bottom" timestamp="1625685694951">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.0.bottom/0.0.1707.680@0.0.1707.680" timestamp="1625685694951" />
+    <state width="1685" height="98" key="GridCell.Tab.0.center" timestamp="1625685694951">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.0.center/0.0.1707.680@0.0.1707.680" timestamp="1625685694950" />
+    <state width="1685" height="98" key="GridCell.Tab.0.left" timestamp="1625685694950">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.0.left/0.0.1707.680@0.0.1707.680" timestamp="1625685694950" />
+    <state width="1685" height="98" key="GridCell.Tab.0.right" timestamp="1625685694951">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.0.right/0.0.1707.680@0.0.1707.680" timestamp="1625685694951" />
+    <state width="1685" height="98" key="GridCell.Tab.1.bottom" timestamp="1625685694671">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.1.bottom/0.0.1707.680@0.0.1707.680" timestamp="1625685694671" />
+    <state width="1685" height="98" key="GridCell.Tab.1.center" timestamp="1625685694671">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.1.center/0.0.1707.680@0.0.1707.680" timestamp="1625685694671" />
+    <state width="1685" height="98" key="GridCell.Tab.1.left" timestamp="1625685694671">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.1.left/0.0.1707.680@0.0.1707.680" timestamp="1625685694671" />
+    <state width="1685" height="98" key="GridCell.Tab.1.right" timestamp="1625685694671">
+      <screen x="0" y="0" width="1707" height="680" />
+    </state>
+    <state width="1685" height="98" key="GridCell.Tab.1.right/0.0.1707.680@0.0.1707.680" timestamp="1625685694671" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -337,195 +124,20 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/forms/mainForm.py</url>
-          <line>90</line>
+          <line>112</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/forms/mainForm.py</url>
+          <line>111</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/forms/mainForm.py</url>
+          <line>90</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/supportFunctions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/baseCommandHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../MainCompleteSetOfFlowArea.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/baseCommandHandlerParameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../SupportFunctionsForClaster.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms/mplgraph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/orm/relationships.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="1898" selection-start-line="1898" selection-end-line="1898" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-          <folding>
-            <element signature="e#116#162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../SetOfBlades.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="e#31#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/nominalParameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="39" selection-start-line="14" selection-start-column="3" selection-end-line="22" selection-end-column="39" />
-          <folding>
-            <element signature="e#58#81#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/generateMeasure/generateMeasureCommandHandlerParameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/default.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="587" selection-start-line="587" selection-end-line="587" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/measuredParameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="28" />
-          <folding>
-            <element signature="e#69#92#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/loadNominals/loadNominalsCommandHandlerParameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/loadMeasure/loadMeasureCommandHandlerParameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/mainHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/generateMeasure/generateMeasureCommandHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/loadMeasure/loadMeasureCommandHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/mainSQL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="73" column="30" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
-          <folding>
-            <element signature="e#40#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding>
-            <element signature="e#116#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms/mainForm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="88" column="54" lean-forward="true" selection-start-line="88" selection-start-column="54" selection-end-line="88" selection-end-column="54" />
-          <folding>
-            <element signature="e#35#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
