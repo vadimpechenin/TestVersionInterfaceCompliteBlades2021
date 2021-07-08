@@ -4,6 +4,7 @@
 from handlers.loadNominals.loadNominalsCommandHandlerParameter import LoadNominalsCommandHandlerParameter
 from handlers.generateMeasure.generateMeasureCommandHandlerParameter import GenerateMeasureCommandHandlerParameter
 from handlers.loadMeasure.loadMeasureCommandHandlerParameter import LoadMeasureCommandHandlerParameter
+from handlers.calculationNominals.calculationNominalscommandHandlerParameter import CalculationNominalscommandHandlerParameter
 
 from forms.mplgraph import MPLgraph
 import os
@@ -21,22 +22,45 @@ class MainForm():
     def __init__(self,handler):
         self.handler = handler
         #Переменные, с которыми будет работать форма
-        self.number_of_blades=None
-        self.T_thickness = [None, None]
-        self.T_angle = [None, None]
+        self.number_of_blades = None
+        self.T_thickness = [None, None] # Допуск на толщину
+        self.T_angle = [None, None] # Допуск на угол
         self.delta_thickness = None
         self.delta_angle = None
-        self.filedb = None
+
+        self.thickness = None  # Номинальное значение толщины, обеспечивающее натяг
+        self.thickness_T = None   # толщина до точки вращения со стороны корыта
+        self.thickness_B = None   # толщина до точки вращения со стороны спинки
+        self.thickness_T_nom = None
+        self.thickness_B_nom = None
+        self.angle = None # Угол антивибрационной полки
+
+        # Толщина полки со стороны корыта
+        self.shelf_width_T = None
+        self.shelf_width_half_T = None  #
+        self.T_shelf_width_half_T = [None, None]  #
+
+        # Толщина полки со стороны спинки
+        self.shelf_width_B = None
+        self.shelf_width_half_B = None  #
+        self.T_shelf_width_half_B = [None, None] #
+
+        # Угол и расстояния для срезов лопаток
+        self.angle_slice = None
+        self.slice_B = None # со стороны спинки
+        self.slice_T = None # со стороны корыта
+
+        self.filedb = ''
 
     def show(self):
         figure_w, figure_h = 300, 300
         layout = [
-            [sg.Text('base'), sg.InputText('84'), sg.Text('exponent'), sg.InputText('1')],
+            [sg.Text('Количество лопаток'), sg.InputText('84', key='-numberblades-'), sg.Text('exponent'), sg.InputText('1', key='-null-')],
             [sg.Canvas(size=(figure_w, figure_h), key='-CANVAS-'),
              sg.Canvas(size=(figure_w, figure_h), key='-CANVAS2-')],
             [sg.Multiline(size=(40, 10), key = '_output_'), sg.Multiline(size=(40, 10), key = '_output2_')],
             [sg.Submit(), sg.Exit(), sg.Button('Загрузить номинальные значения'), sg.Button('Загрузить измерения'), sg.Button('Генерация измерений')],#, sg.Output
-            [sg.Input(), sg.FileBrowse()]
+            [sg.Input(key='-databasename-'), sg.FileBrowse()]
         ]
         window = sg.Window('MVC Test', layout, grab_anywhere=True, finalize=True)
         figure = mpl.figure.Figure(figsize=(4, 3), dpi=100)  # 5, 4
@@ -54,37 +78,65 @@ class MainForm():
             if event in (None, 'Exit'):  # If user closed window with X or if user clicked "Exit" event then exit
                 break
             if event == 'Submit':
-                x, y = self.powerplot(float(values[0]), float(values[1]))
+                x, y = self.powerplot(float(values['-numberblades-']), float(values['-null-']))
                 canvas.clear()
                 canvas.plot(x, y)
 
             if event == 'Загрузить номинальные значения':
                 window.FindElement('_output_').Update('')
                 # window['_output_'].TKOut.output.config(wrap='word')  # set Output element word wrapping
-                self.filedb = os.path.basename(values[2])
+                self.filedb = os.path.basename(values['-databasename-'])
                 if len(self.filedb)==0:
                     sg.PopupAnnoying('Не указана или отсутствует база данных')  # Просто запускает окно
                     continue
                 parameters = LoadNominalsCommandHandlerParameter(self.filedb, 'nominal')
                 window['_output_'].print('Load from database: ' + self.filedb)
                 result_request = self.handler.initFunction(0, parameters)
+                #Сохранение переменных формы
+                self.T_thickness[0], self.T_thickness[1] = result_request[0]['T_thickness_lower'], \
+                                                           result_request[0]['T_thickness_upper']
+                self.T_angle[0], self.T_angle[1]  = result_request[0]['T_angle_lower'], \
+                                                           result_request[0]['T_angle_upper']
+
+                self.thickness = result_request[0]['thickness'] # Номинальное значение толщины, обеспечивающее натяг
+                self.thickness_T = result_request[0]['thickness_T']  # толщина до точки вращения со стороны корыта
+                self.thickness_B = result_request[0]['thickness_B']  # толщина до точки вращения со стороны спинки
+                self.thickness_T_nom = result_request[0]['thickness_T_nom']
+                self.thickness_B_nom = result_request[0]['thickness_B_nom']
+                self.angle = result_request[0]['angle']  # Угол антивибрационной полки
+
+                # Толщина полки со стороны корыта
+                self.shelf_width_T = result_request[0]['shelf_width_T']
+                self.shelf_width_half_T = result_request[0]['shelf_width_half_T']  #
+                self.T_shelf_width_half_T[0], self.T_shelf_width_half_T[1] = \
+                    result_request[0]['T_shelf_width_half_T_lower'], result_request[0]['T_shelf_width_half_T_upper']  #
+
+                # Толщина полки со стороны спинки
+                self.shelf_width_B = result_request[0]['shelf_width_B']
+                self.shelf_width_half_B = result_request[0]['shelf_width_half_B']  #
+                self.T_shelf_width_half_B[0], self.T_shelf_width_half_B[1] = \
+                    result_request[0]['T_shelf_width_half_B_lower'], result_request[0]['T_shelf_width_half_B_upper']  #
+
+                # Угол и расстояния для срезов лопаток
+                self.angle_slice = result_request[0]['angle_slice']
+                self.slice_B = result_request[0]['slice_B']  # со стороны спинки
+                self.slice_T = result_request[0]['slice_T']  # со стороны корыта
+
                 window['_output_'].print('Parameters: ' + str(result_request))
 
             if event == 'Генерация измерений':
-                #sg.Print('You entered ', values[0])
-                self.filedb = os.path.basename(values[2])
+                self.filedb = os.path.basename(values['-databasename-'])
                 if len(self.filedb)==0:
                     sg.PopupAnnoying('Не указана или отсутствует база данных')  # Просто запускает окно
                     continue
-                self.number_of_blades = int(values[0])
-                T_thickness_lower = -0.1  # Допуск на толщину, нижняя граница
-                T_thickness_upper = 0.15  # Допуск на толщину, верхняя граница
-                T_angle_lower = -1/6/180*np.pi  # Допуск на угол, нижняя граница
-                T_angle_upper = 1/6/180*np.pi  # Допуск на угол, верхняя граница
-                self.delta_thickness = np.random.normal((T_thickness_upper+T_thickness_lower)/2,
-                                                   (T_thickness_upper-T_thickness_lower)/6, size = self.number_of_blades)
-                self.delta_angle = np.random.normal((T_angle_upper + T_angle_lower)/2,
-                                                   (T_angle_upper - T_angle_lower)/6, size = self.number_of_blades)
+                self.number_of_blades = int(values['-numberblades-'])
+                if (self.T_thickness[0]==None):
+                    sg.PopupAnnoying('Не загружены значения допусков')  # Просто запускает окно
+                    continue
+                self.delta_thickness = np.random.normal((self.T_thickness[1]+self.T_thickness[0])/2,
+                                                   (self.T_thickness[1]-self.T_thickness[0])/6, size = self.number_of_blades)
+                self.delta_angle = np.random.normal((self.T_angle[1] + self.T_angle[0])/2,
+                                                   (self.T_angle[1] - self.T_angle[0])/6, size = self.number_of_blades)
                 parameters = GenerateMeasureCommandHandlerParameter(self.filedb, 'measure', self.delta_thickness, self.delta_angle)
                 result_request = self.handler.initFunction(1, parameters)
                 window.FindElement('_output2_').Update('')
@@ -92,12 +144,11 @@ class MainForm():
 
             if event == 'Загрузить измерения':
                 window.FindElement('_output_').Update('')
-                #window['_output_'].TKOut.output.config(wrap='word')  # set Output element word wrapping
-                self.filedb = os.path.basename(values[2])
+                self.filedb = os.path.basename(values['-databasename-'])
                 if len(self.filedb)==0:
                     sg.PopupAnnoying('Не указана или отсутствует база данных')  # Просто запускает окно
                     continue
-                parameters = LoadNominalsCommandHandlerParameter(self.filedb,'measure')
+                parameters = LoadMeasureCommandHandlerParameter(self.filedb,'measure')
                 window['_output2_'].print('Load from database: ' + self.filedb)
                 result_request = self.handler.initFunction(2, parameters)
                 window.FindElement('_output2_').Update('')
@@ -105,7 +156,8 @@ class MainForm():
                 #Вывод всплывающего окна и выход из запроса
                 number_of_blades_dict = result_request.pop()
                 self.number_of_blades = number_of_blades_dict[0]['Количество']
-                if self.number_of_blades==0:
+                window.FindElement('-numberblades-').Update(str(self.number_of_blades))
+                if self.number_of_blades==0 or self.number_of_blades==None:
                     sg.PopupAnnoying('Нет данных по измеренным отклонениям')  # Просто запускает окно
                     continue
                 #Сохранение отклонений
@@ -115,7 +167,6 @@ class MainForm():
                     deviation_dict = result_request.pop(0)
                     self.delta_thickness[i] = deviation_dict['delta_thickness']
                     self.delta_angle[i] = deviation_dict['delta_angle']
-                g = 0
         window.close()
 
     def powerplot(self,base, exponent):

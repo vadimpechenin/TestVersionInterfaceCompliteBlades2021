@@ -5,6 +5,7 @@
 from handlers.loadNominals.loadNominalsCommandHandler import LoadNominalsCommandHandler
 from handlers.generateMeasure.generateMeasureCommandHandler import GenerateMeasureCommandHandler
 from handlers.loadMeasure.loadMeasureCommandHandler import LoadMeasureCommandHandler
+from handlers.calculationNominals.calculationNominalscommandHandler import CalculationNominalscommandHandler
 
 class MainHandler():
     def __init__(self):
@@ -12,6 +13,7 @@ class MainHandler():
         self.dict[0] = LoadNominalsCommandHandler()
         self.dict[1] = GenerateMeasureCommandHandler()
         self.dict[2] = LoadMeasureCommandHandler()
+        self.dict[3] = CalculationNominalscommandHandler()
 
 
     def initFunction(self,code_request, parameter):
