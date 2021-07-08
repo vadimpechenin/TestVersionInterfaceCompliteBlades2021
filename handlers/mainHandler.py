@@ -5,7 +5,7 @@
 from handlers.loadNominals.loadNominalsCommandHandler import LoadNominalsCommandHandler
 from handlers.generateMeasure.generateMeasureCommandHandler import GenerateMeasureCommandHandler
 from handlers.loadMeasure.loadMeasureCommandHandler import LoadMeasureCommandHandler
-from handlers.calculationNominals.calculationNominalscommandHandler import CalculationNominalscommandHandler
+from handlers.calculationNominals.calculationNominalsСommandHandler import CalculationNominalscommandHandler
 
 class MainHandler():
     def __init__(self):

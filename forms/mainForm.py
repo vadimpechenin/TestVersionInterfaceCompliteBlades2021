@@ -4,7 +4,7 @@
 from handlers.loadNominals.loadNominalsCommandHandlerParameter import LoadNominalsCommandHandlerParameter
 from handlers.generateMeasure.generateMeasureCommandHandlerParameter import GenerateMeasureCommandHandlerParameter
 from handlers.loadMeasure.loadMeasureCommandHandlerParameter import LoadMeasureCommandHandlerParameter
-from handlers.calculationNominals.calculationNominalscommandHandlerParameter import CalculationNominalscommandHandlerParameter
+from handlers.calculationNominals.calculationNominalsСommandHandlerParameter import CalculationNominalscommandHandlerParameter
 
 from forms.mplgraph import MPLgraph
 import os
@@ -59,7 +59,7 @@ class MainForm():
             [sg.Canvas(size=(figure_w, figure_h), key='-CANVAS-'),
              sg.Canvas(size=(figure_w, figure_h), key='-CANVAS2-')],
             [sg.Multiline(size=(40, 10), key = '_output_'), sg.Multiline(size=(40, 10), key = '_output2_')],
-            [sg.Submit(), sg.Exit(), sg.Button('Загрузить номинальные значения'), sg.Button('Загрузить измерения'), sg.Button('Генерация измерений')],#, sg.Output
+            [sg.Submit(), sg.Exit(), sg.Button('Загрузить номинальные значения'), sg.Button('Вычислить номинальные параметры'), sg.Button('Загрузить измерения'), sg.Button('Генерация измерений')],#, sg.Output
             [sg.Input(key='-databasename-'), sg.FileBrowse()]
         ]
         window = sg.Window('MVC Test', layout, grab_anywhere=True, finalize=True)
@@ -123,6 +123,16 @@ class MainForm():
                 self.slice_T = result_request[0]['slice_T']  # со стороны корыта
 
                 window['_output_'].print('Parameters: ' + str(result_request))
+
+            if event == 'Вычислить номинальные параметры':
+                if self.thickness==None:
+                    sg.PopupAnnoying('Не загружены значения допусков')  # Просто запускает окно
+                    continue
+                parameters = CalculationNominalscommandHandlerParameter(self.thickness_B, self.angle, self.thickness_B_nom,
+                                                                 self.shelf_width_B, self.shelf_width_half_B, self.slice_B,
+                                                                 self.angle_slice, self.thickness_T, self.thickness_T_nom,
+                                                                 self.shelf_width_T, self.shelf_width_half_T, self.slice_T)
+                result_request = self.handler.initFunction(3, parameters)
 
             if event == 'Генерация измерений':
                 self.filedb = os.path.basename(values['-databasename-'])
